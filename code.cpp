@@ -102,4 +102,60 @@ void generate(requisition r,po p){
 	fout<<"\n\n\n\n\n Authorised Signatory:\t\t\t\t\t\t  Total:_ _ _";
 	fout.close();
 }
+void main(){
+	requisition r;
+	char flag='f';
+	char ch;
+	while(1){
+		system("cls");
+		gotoxy(35,8);
+		cout<<"PR2PO";
+		gotoxy(35,8);
+		cout<<"________";
+		gotoxy(22,12);
+		cout<<"1 - Creat New Requisition";
+		gotoxy(22,13);
+		cout<<"2 - Display Requisition";
+		gotoxy(22,14);
+		cout<<"3 - Generate PO";
+		gotoxy(22,15);
+		cout<<"4 - Exit";
+		gotoxy(22,18);
+		cout<<"Select the option by typing numeric code";
+		ch=getch();
+		switch(ch){
+			case('1'){
+				r.get_data();
+				flag='t';
+				break;
+			}
+			case('2'){
+				if(flag=='f'){
+					gotoxy(22,20);
+					cout<<"Requisition details not yet entered! press any key to continue....";
+					getch();
+				}
+				else
+					r.display();
+				break;
+			}
+			case('3'){
+				po p;
+				generate(r,p);
+				gotoxy(22,20);
+				cout<<"PR has been Converted into a PO. You can view the current_po.txt file to view the generated PO and take its printout";
+				getch();
+				break;
+			}
+			case('4'){
+				exit(1);
+			}
+			default:{
+				gotoxy(22,20);
+				cout<<"Invalid choice ! Press Any Key to continue";
+				getch();
+			}
+		}
+	}
+}
 
